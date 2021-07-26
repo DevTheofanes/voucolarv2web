@@ -1,0 +1,23 @@
+/*WHATSAPP-RODAPÉ*/
+
+.whats-link { position: fixed; bottom: 20px; right: 20px; display: block; cursor: pointer; z-index: 99999999; }
+
+@keyframes pulseSunset{ 0% { transform: scale(1); }100% { transform: scale(1.2); } } .pulseSunset { animation: pulseSunset 2s infinite alternate cubic-bezier(0.4, 0, 1, 1); }
+
+/* CARROSEL */
+
+.rec.rec-arrow:hover {
+  background-color: #A16695 !important;
+}
+
+.rec.rec-arrow:hover:enabled {
+  background-color: #A16695 !important;
+}
+
+.rec.rec-arrow:focus:enabled {
+  background-color: #A16695 !important;
+}
+
+.rec.rec-pagination{
+  display: none;
+}
