@@ -12,8 +12,8 @@ export function NewModel({ isOpen, onRequestClose }) {
 
   const [idMark, setIdMark] = useState("")
   const [name, setName] = useState("")
-  const [weight, setWeight] = useState("")
-  const [dimensions, setDimensions] = useState("")
+  const [weight, setWeight] = useState("Not used")
+  const [dimensions, setDimensions] = useState("Not used")
   const [description, setDescription] = useState("")
   const [file, setFile] = useState(null)
 
@@ -86,7 +86,7 @@ export function NewModel({ isOpen, onRequestClose }) {
         />
       </FieldInput>
 
-      <FieldsContainer>
+      {/* <FieldsContainer>
         <FieldInput>
           <label>Peso</label>
           <input 
@@ -106,7 +106,7 @@ export function NewModel({ isOpen, onRequestClose }) {
             onChange={(e) => setDimensions(e.target.value)}
           />
         </FieldInput>
-      </FieldsContainer>
+      </FieldsContainer> */}
 
       <FieldInput className="textAreaInput">
         <label>Descrição</label>

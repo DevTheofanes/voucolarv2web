@@ -20,6 +20,7 @@ export const AcessOrders = (props) => {
     const response = await api.get("/orders")
 
     setOrders(response.data.reverse())
+    
     setOrderSelected(response.data[0])
   }
 

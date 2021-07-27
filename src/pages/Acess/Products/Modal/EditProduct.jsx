@@ -4,51 +4,51 @@ import { useUser } from '../../../../hooks/useUser'
 
 import { FormModal } from '../../../../components/Modal/FormModal';
 import { ButtonsContainer, FieldInput, FieldsContainer } from '../../../../components/Modal/FormModal/styles';
-// import { InputSelectCustomized } from '../../../../components/InputSelectPersonalized'
+import { InputSelectCustomized } from '../../../../components/InputSelectPersonalized'
 import api from '../../../../services/api';
 import history from '../../../../services/history';
 
 export function EditProduct({ isOpen, onRequestClose, product }) {
   const { token } = useUser()
-  // const [models, setModels] = useState([])
-  // const [selected, setSelected] = useState([])
+  const [models, setModels] = useState([])
+  const [selected, setSelected] = useState([])
 
   const [name, setName] = useState("")
   const [file, setFile] = useState(null)
   const [value, setValue] = useState(0)
   const [valueNotDiscount, setValueNotDiscount] = useState(0)
 
-  // function formattedIdsModels(){
-  //  let arrayIds = []
+  function formattedIdsModels(){
+   let arrayIds = []
 
-  //   for (const key in selected) {
-  //     if (Object.hasOwnProperty.call(selected, key)) {
-  //       const elementSub = selected[key];
+    for (const key in selected) {
+      if (Object.hasOwnProperty.call(selected, key)) {
+        const elementSub = selected[key];
         
-  //       let id = null;
+        let id = null;
 
-  //       for (const model in models) {
-  //         if (Object.hasOwnProperty.call(models, model)) {
-  //           const element = models[model];
+        for (const model in models) {
+          if (Object.hasOwnProperty.call(models, model)) {
+            const element = models[model];
         
             
-  //           if(element.name === elementSub){
-  //             id = element.id
-  //           }
-  //         }
-  //       }
+            if(element.name === elementSub){
+              id = element.id
+            }
+          }
+        }
 
-  //       if(id){
-  //         arrayIds.push(id)
-  //       }
-  //     }
-  //   }
+        if(id){
+          arrayIds.push(id)
+        }
+      }
+    }
     
-    // return arrayIds.toString()
-  // }
+    return arrayIds.toString()
+  }
 
   async function handleCreateProduct(e){
-    // const idsModelsWithoutCustomization = formattedIdsModels()
+    const idsModelsWithoutCustomization = formattedIdsModels()
 
     e.preventDefault()
     if(!name || !value){
@@ -72,6 +72,7 @@ export function EditProduct({ isOpen, onRequestClose, product }) {
       name,
       file,
       value,
+      idsModelsWithoutCustomization,
       valueNotDiscount,
     }
     
@@ -90,15 +91,15 @@ export function EditProduct({ isOpen, onRequestClose, product }) {
     }
   }
 
-  // async function loadModels(){
-  //   const response = await api.get('models')
+  async function loadModels(){
+    const response = await api.get('models')
 
-  //   setModels(response.data)
-  // }
+    setModels(response.data)
+  }
   
   useEffect(() => {
     // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
-    // loadModels()
+    loadModels()
     setName(product.name)
     setValue(product.value)
     setValueNotDiscount(product.valueNotDiscount)
@@ -138,7 +139,7 @@ export function EditProduct({ isOpen, onRequestClose, product }) {
         </FieldInput>
       </FieldsContainer>
 
-      {/* <InputSelectCustomized data={models} selectedItems={selected} setSelected={setSelected} /> */}
+      <InputSelectCustomized data={models} selectedItems={selected} setSelected={setSelected} />
 
       <FieldInput className="nextInput">
         <label>Troque a imagem para seu produto</label>
