@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { More } from '../../../../../components/MoreMinus';
 import { useCart } from '../../../../../hooks/useCart';
 import { useUser } from '../../../../../hooks/useUser';
@@ -10,7 +9,6 @@ import {
   ProductName,
   ProductPrice,
   ProductSubTotal,
-  ProductInvisible,
   ProductRemove,
   ProductThumbnail,
   ProductNameGrid,
@@ -33,7 +31,6 @@ function ColumnInfo() {
                 <thead>
                   <tr>
                     <ProductName colSpan={2}>Produto</ProductName>
-                    <ProductInvisible>{""}</ProductInvisible>
                     <ProductPrice>Preço</ProductPrice>
                     <ProductPrice>Quantidade</ProductPrice>
                     <ProductSubTotal>Subtotal</ProductSubTotal>
@@ -48,17 +45,12 @@ function ColumnInfo() {
                         </ProductRemove>
                         <ProductThumbnail>
                           
-                        
                         <ImagesPhone>
                           <div>
-                            <Link to={`/category/${item.category.name}/product/${item.id}`}>
-                              <img src={`${host}/files/${item.image}`} alt={item.name} style={{ objectFit: "cover"}}/>
-                              <img src={`${host}/files/${item.background}`} alt=""/>
-                            </Link>
+                            <img src={`${host}/files/${item.image}`} alt={item.name} />
+                            <img src={`${host}/files/${item.background}`} alt=""/>
                           </div>
                         </ImagesPhone>
-                        
-                        
                         </ProductThumbnail>
                         <ProductNameGrid>
                           <a href="/cart">{item.name}</a>

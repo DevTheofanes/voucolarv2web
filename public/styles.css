@@ -21,3 +21,16 @@
 .rec.rec-pagination{
   display: none;
 }
+
+.rec rec-arrow{
+  width: 2.625rem !important;
+  height: 2.625rem !important;
+}
+
+.rec.rec-arrow {
+  min-width: 2.625rem !important;
+  width: 2.625rem !important;
+  line-height: 2.625rem !important;
+  height: 2.625rem !important;
+  font-size: 1rem;
+}

@@ -69,19 +69,64 @@ function Main(props) {
     history.push("/cart")
   }
 
+  function separateModels(data){
+    if(product.id){
+      const arrayIdsModels = product.idsModelsWithoutCustomization.split(",")
+      console.log(`Array que não pode ${arrayIdsModels}`)
+
+      const modelsUpdated = []
+
+      for (const key in data) {
+        if (Object.hasOwnProperty.call(data, key)) {
+          const model = data[key];
+
+          const find = arrayIdsModels.find((id) => Number(id) === Number(model.id))
+
+          // for (const key in arrayIdsModels) {
+          //   if (Object.hasOwnProperty.call(arrayIdsModels, key)) {
+          //     const id = arrayIdsModels[key];
+          //     console.log("VERIFICAÇÂO")
+          //     console.log(id)
+          //     console.log(model.id)
+          //     if (Number(id) !== Number(model.id)) {
+          //       modelsUpdated.push(model)
+          //     }
+          //   }
+          // }
+
+          console.log(model)
+          console.log(arrayIdsModels.length)
+
+          if(!find){
+            modelsUpdated.push(model)
+          }
+        }
+      }
+      console.log(modelsUpdated)
+      setModels(modelsUpdated)
+    }
+
+    // if(product.idsModelsWithoutCustomization.length === 0){
+    //   setModels(data)
+    // }
+  }
+
   async function loadModels(){
-    const { data } = await api.get(`/models`)
+    const response = await api.get(`/models`)
+
+    const data = response.data;
 
     setImageBackground(data[data.length - 1].image)
     setNameMark(data[data.length - 1].name)
     setModelSelect(data[data.length - 1].id)
-    setModels(data)
+    separateModels(data)
   }
 
   useEffect(() => {
     // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     loadModels();
-  }, [token])
+    
+  }, [token, product])
 
   useEffect(() => {
     for (const key in models) {
@@ -111,7 +156,7 @@ function Main(props) {
                       imageBackground ? (
                         <ImagesPhone>
                           <div>
-                            <img src={`${host}/files/${product.image}`} alt={product.name} />
+                            <img src={`${host}/files/${product.image}`} alt={product.name} style={{ objectFit: "cover"}}/>
                             <img src={`${host}/files/${imageBackground}`} alt=""/>
                           </div>
                         </ImagesPhone>
@@ -194,4 +239,5 @@ function Main(props) {
 }
 
 export default Main;
+
 

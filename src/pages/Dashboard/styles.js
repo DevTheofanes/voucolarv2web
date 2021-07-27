@@ -60,8 +60,9 @@ export const Input = styled.div`
   
   @media (max-width:600px){
     /* justify-content: flex-start; */
+    margin: 0 0 2rem 0;
     select{
-      width: 68%;
+      width: 80%;
     }
   }
 `;

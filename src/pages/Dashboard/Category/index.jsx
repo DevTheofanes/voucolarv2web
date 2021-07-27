@@ -87,14 +87,19 @@ export function Category( props ) {
 
                   <ImagesPhone>
                     <div>
-                      <img src={`${host}/files/${product.image}`} alt={product.name} />
+                      <img src={`${host}/files/${product.image}`} alt={product.name} style={{ objectFit: "cover"}}/>
                       <img src={`${host}/files/${imageBackground}`} alt=""/>
                     </div>
                   </ImagesPhone>
 
                   <h3>{product.name}</h3>
-                  <span>Abstrato</span>
-                  <strong>R$ 45,00</strong>
+                  <span>{product.category.name}</span>
+                  <strong>{
+                    new Intl.NumberFormat('pt-BR', {
+                      style: "currency",
+                      currency: "BRL"
+                    }).format(product.value)
+                  }</strong>
                 </Product>
               )
             })

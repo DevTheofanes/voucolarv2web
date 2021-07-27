@@ -54,6 +54,7 @@ export const TextBreadcrumb = styled(Link)`
   text-decoration: none;
   touch-action: manipulation;
   background-color: transparent;
+  font-size: 0.9rem;
 
   &:hover {
     color: #222 !important;

@@ -14,9 +14,34 @@ export const Container = styled.div`
     font-weight: 500;
     color: #000;
   }
+
+  @media (max-width:800px){
+    display: none;
+  };
 `;
 
-export const Product = styled(Link)`
+export const ContainerToPhone = styled.div`
+  padding: 0 2rem;
+  margin-bottom: 3.2rem;
+  display: none;
+
+  h3{
+    border-top: 1px solid #eee;
+    padding: 2rem 0;
+    
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #000;
+  }
+
+  @media (max-width:800px){
+    display: block;
+  };
+`;
+
+export const Product = styled.button`
+  border: none;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +52,7 @@ export const Product = styled(Link)`
     font-size: 0.875rem;
     font-weight: 300;
     color: #A0A0A0;
+    border: none;
   }
 
   img{
@@ -44,6 +70,20 @@ export const Product = styled(Link)`
     font-weight: 600;
     color: #000;
   }
+
+  @media (max-width:800px){
+    h3 { 
+      font-size: .6rem;
+    }
+
+    span{
+      font-size: .75rem;
+    }
+
+    strong{
+      font-size: .75rem;
+    }
+  }
 `;
 
 export const ImagesPhone = styled.div`
@@ -60,6 +100,14 @@ export const ImagesPhone = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  
+  @media (max-width:800px){
+    img { 
+      width: 7rem !important;
+      height: 12.4rem;
+    }
   }
 `;
 

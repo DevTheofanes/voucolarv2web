@@ -162,6 +162,12 @@ export const SelectModel = styled.select`
   &::placeholder{
     color: #c1c1c1;
   }
+
+  @media (max-width:600px){
+
+      width: 80%;
+
+  }
 `;
 
 export const ProductDescription = styled.p`

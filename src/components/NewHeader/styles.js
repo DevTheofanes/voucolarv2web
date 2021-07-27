@@ -42,6 +42,8 @@ export const Container = styled.div`
     a + a{
       margin-left: 0.75rem;
       display: flex;
+
+      
       
       span{
         display: flex;
@@ -58,5 +60,12 @@ export const Container = styled.div`
       }
     }
     
+    @media (max-width:600px){
+      div{
+        a + a {
+          margin: 0;
+        }
+      }
+    }
   }
 `;

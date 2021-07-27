@@ -44,24 +44,8 @@ export const ProductName = styled.th`
 
   padding-left: 1.4rem;
 
-  /* padding-right: 4rem; */
-
   @media (max-width:600px){
     max-width: 100px;
-  }
-`;
-
-export const ProductInvisible = styled.th`
-  line-height: 1.05;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.5em;
-  text-align: left;
-  border-bottom: 3px solid #ececec;
-  font-size: 0.9em;
-
-  @media (max-width:600px){
-    display: none;
   }
 `;
 
@@ -400,7 +384,7 @@ export const ImagesPhone = styled.div`
 
   img { 
     width: 4.125rem !important;
-    height: 6.1875rem !important;
+    height: 6.1875rem;
   }
 
   img + img {
