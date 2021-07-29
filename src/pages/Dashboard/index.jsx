@@ -72,7 +72,7 @@ export function Dashboard() {
         </PersonalizeBox>
 
         <Input>
-          <select onChange={e => setModelSelect(e.target.value)}>
+          <select class="selectInHome" onChange={e => setModelSelect(e.target.value)}>
             <option value="0">Selecione o Modelo</option>
             {
               models.map(model => {

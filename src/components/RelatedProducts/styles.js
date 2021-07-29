@@ -21,7 +21,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerToPhone = styled.div`
-  padding: 0 2rem;
+  padding: 0 1rem;
   margin-bottom: 3.2rem;
   display: none;
 
@@ -105,8 +105,8 @@ export const ImagesPhone = styled.div`
   
   @media (max-width:800px){
     img { 
-      width: 7rem !important;
-      height: 12.4rem;
+      width: 8.2rem !important;
+      height: 13.8rem;
     }
   }
 `;

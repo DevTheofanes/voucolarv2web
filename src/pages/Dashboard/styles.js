@@ -60,11 +60,18 @@ export const Input = styled.div`
   
   @media (max-width:600px){
     /* justify-content: flex-start; */
+
+    .selectInHome{
+      margin-top: 2rem;
+    }
+
     margin: 0 0 2rem 0;
     select{
       width: 80%;
     }
   }
+
+  
 `;
 
 export const ProductsList = styled.div`
