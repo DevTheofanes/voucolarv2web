@@ -69,7 +69,7 @@ export const AcessProducts = (props) => {
             return (
               <GridRow key={product.id}>
                 <span>{product.id}</span>
-                <img src={`${host}/files/${product.image}`} alt={product.name} />
+                <img class="productImg" src={`${host}/files/${product.image}`} alt={product.name} />
                 <span>{product.name}</span>
                 <div>
                   <button type="button" onClick={() => handleOpenEditProductModal(product)}>

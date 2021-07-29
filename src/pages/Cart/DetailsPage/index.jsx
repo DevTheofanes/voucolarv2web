@@ -398,6 +398,10 @@ export function DetailsCartPage() {
 
                             <input type="radio" name="typeDelivery" id="pac" onClick={() => setTypePay('pac')}/>
                             <label>Pac</label>
+
+                            {/* <br/>
+                            <input type="radio" name="typeDelivery" id="ret" onClick={() => setTypePay('ret')}/>
+                            <label>Retirar no local</label> */}
                           </div>
                           <button onClick={() => loadFrete()}>Calcular</button>
                         </FreteItemContent>

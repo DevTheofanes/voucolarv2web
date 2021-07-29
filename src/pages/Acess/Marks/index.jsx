@@ -71,7 +71,7 @@ export function AcessMarks() {
             return (
               <GridRow key={mark.id}>
                 <span>{mark.id}</span>
-                <img src={`${host}/files/${mark.image}`} alt={mark.name} />
+                <img className="markImg" src={`${host}/files/${mark.image}`} alt={mark.name} />
                 <span>{mark.name}</span>
                 <div>
                   <button type="button" onClick={() => handleOpenUpdateMarkModal(mark)}>

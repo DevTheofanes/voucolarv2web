@@ -68,6 +68,9 @@ export function EditModel({ isOpen, onRequestClose, model }) {
     setWeight(model.weight)
   }, [model, token])
 
+  console.log('edit')
+  console.log(model)
+
   return (
     <FormModal isOpen={isOpen} onRequestClose={onRequestClose} title="Editar modelo">
       <FieldInput>
@@ -77,6 +80,16 @@ export function EditModel({ isOpen, onRequestClose, model }) {
           placeholder="Nome do modelo" 
           value={name} 
           onChange={(e) => setName(e.target.value)}
+        />
+      </FieldInput>
+
+      <FieldInput>
+        <label>Marca</label>
+        <input 
+          type="text" 
+          placeholder="Nome do modelo" 
+          value={model.nameMark} 
+          readonly="readonly"
         />
       </FieldInput>
 

@@ -181,6 +181,16 @@ export const GridRow = styled.section`
     max-width:5.3125rem;
   }
 
+  .productImg{
+    height: 5.3125rem; 
+    width: 3.75rem; 
+    object-fit: cover;
+  }
+
+  .markImg{
+    object-fit: contain;
+  }
+
   span{
     color: #222;
     font-size: 0.875rem;

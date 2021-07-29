@@ -61,7 +61,7 @@ function ColumnInfo() {
                         
                         </ProductThumbnail>
                         <ProductNameGrid>
-                          <a href="/cart">{item.name}</a>
+                          <a href={`/category/${item.category.name}/product/${item.id}`}>{item.name}</a>
                         </ProductNameGrid>
                         <ProductPriceGrid>
                           <span>
