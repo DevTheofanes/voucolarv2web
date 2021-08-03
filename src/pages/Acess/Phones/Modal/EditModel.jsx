@@ -12,7 +12,7 @@ export function EditModel({ isOpen, onRequestClose, model }) {
 
   const [name, setName] = useState("")
   const [weight, setWeight] = useState("Not used")
-  const [dimensions, setDimensions] = useState("Not used")
+  const [dimensions, setDimensions] = useState("")
   const [description, setDescription] = useState("")
   const [file, setFile] = useState(null)
   

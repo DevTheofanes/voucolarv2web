@@ -73,19 +73,22 @@ export const Product = styled.button`
     color: #000;
   }
 
-  /* @media (max-width:800px){
+  @media (max-width:800px){
     h3 { 
-      font-size: .6rem;
+      font-size: 1rem;
+      padding: 0;
+      padding-bottom: 0.25rem;
     }
 
     span{
       font-size: .75rem;
+      padding-bottom: 0.25rem;
     }
 
     strong{
-      font-size: .75rem;
+      font-size: .85rem;
     }
-  } */
+  }
 `;
 
 export const ImagesPhone = styled.div`
@@ -107,8 +110,9 @@ export const ImagesPhone = styled.div`
   
   @media (max-width:800px){
     img { 
-      width: 8.2rem !important;
-      height: 13.8rem;
+      width: 11.28rem !important;
+      /* height: 13.8rem; */
+      height: 19rem;
     }
   }
 `;
