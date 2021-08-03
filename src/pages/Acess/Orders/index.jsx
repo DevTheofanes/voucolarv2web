@@ -26,6 +26,10 @@ export const AcessOrders = (props) => {
 
   useEffect(() => {
     loadOrders();
+
+    if(token){
+      api.defaults.headers.authorization = token
+    }
   }, [token])
 
   return (

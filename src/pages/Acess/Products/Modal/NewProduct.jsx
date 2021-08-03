@@ -98,6 +98,9 @@ export function NewProduct({ isOpen, onRequestClose, id }) {
   useEffect(() => {
     // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE4MjU2Mzg2LCJleHAiOjE2MTg4NjExODZ9.gsx8MYDq3_DcobF8p-6Q9n7pSC0jjrh4VbxddVxI3c0`;
     loadModels()
+    if(token){
+      api.defaults.headers.authorization = token
+    }
   }, [ token ])
 
   return (

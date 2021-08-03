@@ -27,6 +27,9 @@ export const AcessProducts = (props) => {
   useEffect(() => {
     // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     loadProducts();
+    if(token){
+      api.defaults.headers.authorization = token
+    }
   }, [ token ])
 
   const [isNewProductOpen, setIsNewProductOpen] = useState(false)

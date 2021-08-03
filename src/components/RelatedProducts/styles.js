@@ -53,6 +53,8 @@ export const Product = styled.button`
     font-weight: 300;
     color: #A0A0A0;
     border: none;
+    /* max-width: ; */
+    /* padding: 0; */
   }
 
   img{
@@ -71,7 +73,7 @@ export const Product = styled.button`
     color: #000;
   }
 
-  @media (max-width:800px){
+  /* @media (max-width:800px){
     h3 { 
       font-size: .6rem;
     }
@@ -83,7 +85,7 @@ export const Product = styled.button`
     strong{
       font-size: .75rem;
     }
-  }
+  } */
 `;
 
 export const ImagesPhone = styled.div`

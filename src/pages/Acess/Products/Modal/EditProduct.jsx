@@ -103,6 +103,10 @@ export function EditProduct({ isOpen, onRequestClose, product }) {
     setName(product.name)
     setValue(product.value)
     setValueNotDiscount(product.valueNotDiscount)
+    
+    if(token){
+      api.defaults.headers.authorization = token
+    }
   }, [product, token])
 
   return (

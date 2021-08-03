@@ -66,6 +66,10 @@ export function EditModel({ isOpen, onRequestClose, model }) {
     setDescription(model.description)
     setDimensions(model.dimensions)
     setWeight(model.weight)
+
+    if(token){
+      api.defaults.headers.authorization = token
+    }
   }, [model, token])
 
   console.log('edit')

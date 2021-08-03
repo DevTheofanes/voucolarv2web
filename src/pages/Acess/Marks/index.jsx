@@ -47,6 +47,10 @@ export function AcessMarks() {
 
   useEffect(() => {
     loadMarks();
+
+    if(token){
+      api.defaults.headers.authorization = token
+    }
   }, [token])
 
   return (

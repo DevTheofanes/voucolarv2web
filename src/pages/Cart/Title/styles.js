@@ -18,7 +18,7 @@ export const FlexCol = styled.div`
 
 export const Breadcrumbs = styled.nav`
   width: 100%;
-  padding: 15px 0;
+  padding: .9rem 0;
 
   font-size: 1.6rem;
   /* font-family: 'Slabo 27px', sans-serif;   */
@@ -41,6 +41,10 @@ export const Breadcrumbs = styled.nav`
   span{
     margin: 0 0.365rem;
   }
+
+  /* @media (max-width:600px){
+    font-size: .85rem;
+  } */
 `;
   
 
@@ -60,5 +64,9 @@ export const LinkRoute = styled(Link)`
 
   @media (max-width:800px){
     font-size: 1rem;
+  }
+
+  @media (max-width:600px){
+    font-size: .85rem;
   }
 `;
