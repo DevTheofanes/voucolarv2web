@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import { ToastContainer } from 'react-toastify';
 
 import history from './services/history'
-import { AcessRoutes } from "./routes/AcessRoutes";
+// import { AcessRoutes } from "./routes/AcessRoutes";
 import Global from "./styles/Global";
 import { Routes } from "./routes/routes";
 
@@ -18,7 +18,7 @@ function App() {
       <Router history={history}>
         <CartContextProvider>
           <Global />
-          <AcessRoutes />
+          {/* <AcessRoutes /> */}
           <Routes />
           <ToastContainer autoClose={1500}/>
         </CartContextProvider>

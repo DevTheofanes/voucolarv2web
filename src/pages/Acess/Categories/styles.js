@@ -20,7 +20,7 @@ export const CategoriesContainer = styled.div`
   }
   `;
 
-export const CategoryItem = styled(Link)`
+export const CategoryItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +28,12 @@ export const CategoryItem = styled(Link)`
   padding: 1.6rem;
   padding-bottom: 0.8rem;
   border-radius: 0.25rem;
+
+  a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   @media (max-width:780px){
     padding: 1.2rem;
@@ -141,8 +147,27 @@ export const CategoryItem = styled(Link)`
     display: inline-block;
     margin: 0;
     margin-top: 0.8rem;
+    margin-bottom: 0.4rem;
     max-width: 18rem;
     color: var(--text-title);
     font-weight: 500;
+  }
+`;
+
+export const CategoryItemActions = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1.6rem;
+
+  svg{
+    padding-left: 5px;
+    padding-bottom: 5px;
+  }
+
+  button{
+    border: 0;
+    background: transparent;
   }
 `;
