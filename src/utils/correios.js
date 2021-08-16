@@ -9,7 +9,8 @@ export async function calculateFrete(args, setValue, setDays){
 
   var options = {
     method: 'GET',
-    url: 'https://cors-anywhere.herokuapp.com/http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx',
+    // url: 'https://cors-anywhere.herokuapp.com/http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx',
+    url: 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx',
     params: {
       nCdEmpresa: acessCorreios.codeEmpresa,
       sDsSenha: acessCorreios.codeSenha,

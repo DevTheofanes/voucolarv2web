@@ -57,7 +57,6 @@ export function Routes() {
       <Route path="/user/login" component={SignIn}/>
       <Route path="/user/register" component={Register}/>
 
-      {/* !ROTAS DO PERSONALIZAR RAPIDO */}
       {/* <CustomizeContextProvider>       
         <CustomizeLayout>
           <Route path="/customize" exact component={Customize} />
