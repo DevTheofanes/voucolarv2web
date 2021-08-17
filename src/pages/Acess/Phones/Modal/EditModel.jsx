@@ -97,8 +97,8 @@ export function EditModel({ isOpen, onRequestClose, model }) {
         />
       </FieldInput>
 
-      {/* <FieldsContainer>
-        <FieldInput>
+      <FieldsContainer>
+        {/* <FieldInput>
           <label>Peso</label>
           <input 
             type="text" 
@@ -106,7 +106,7 @@ export function EditModel({ isOpen, onRequestClose, model }) {
             value={weight} 
             onChange={(e) => setWeight(e.target.value)}
           />
-        </FieldInput>
+        </FieldInput> */}
 
         <FieldInput className="secondInput">
           <label>Dimensões</label>
@@ -117,7 +117,7 @@ export function EditModel({ isOpen, onRequestClose, model }) {
             onChange={(e) => setDimensions(e.target.value)}
           />
         </FieldInput>
-      </FieldsContainer> */}
+      </FieldsContainer>
 
       <FieldInput className="textAreaInput">
         <label>Descrição</label>

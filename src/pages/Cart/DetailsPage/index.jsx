@@ -13,6 +13,7 @@ import {Container, Form, InfoCart, BoxInputDuo, InputSelect, BoxInputOne, BoxInp
 import { toast } from 'react-toastify';
 import api from '../../../services/api';
 import { calculateFrete } from '../../../utils/correios';
+import { useEffect } from 'react';
 
 export function DetailsCartPage() {
   const { user } = useUser()
@@ -51,6 +52,8 @@ export function DetailsCartPage() {
 
   const [ typePay, setTypePay] = useState("")
 
+  const [ freteWithdraw, setFreteWithdraw] = useState(false)
+
   function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
@@ -58,6 +61,10 @@ export function DetailsCartPage() {
   async function loadFrete(){
     if(!typePay){
       return toast.error("Escolha o tipo de entrega")
+    }
+
+    if(typePay === "ret"){
+      return setFrete(0.00001)
     }
 
     const validationOne = cep.length === 8;
@@ -136,6 +143,12 @@ export function DetailsCartPage() {
       toast.error(error.response.data.error)
     }
   }
+
+  useEffect(() => {
+    if(80000000 < cep && cep < 83540000){
+      setFreteWithdraw(true)
+    }
+  },[cep])
 
   return (
     <>
@@ -399,9 +412,15 @@ export function DetailsCartPage() {
                             <input type="radio" name="typeDelivery" id="pac" onClick={() => setTypePay('pac')}/>
                             <label>Pac</label>
 
-                            {/* <br/>
-                            <input type="radio" name="typeDelivery" id="ret" onClick={() => setTypePay('ret')}/>
-                            <label>Retirar no local</label> */}
+                            {
+                              freteWithdraw ? (
+                                <>
+                                  <br/>
+                                  <input type="radio" name="typeDelivery" id="ret" onClick={() => setTypePay('ret')}/>
+                                  <label>Retirar no local</label> 
+                                </>
+                              ) : null
+                            }
                           </div>
                           <button onClick={() => loadFrete()}>Calcular</button>
                         </FreteItemContent>

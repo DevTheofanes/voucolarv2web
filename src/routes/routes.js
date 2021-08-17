@@ -1,4 +1,7 @@
-import { Route, Switch } from 'react-router-dom';
+import {
+  Route,
+  Switch
+} from 'react-router-dom';
 
 import { Dashboard } from '../pages/Dashboard';
 import { Category } from '../pages/Dashboard/Category';
@@ -24,8 +27,6 @@ import { AcessBackground } from '../pages/Acess/Uploads/background';
 import { AcessFigures } from '../pages/Acess/Uploads/figures';
 import { AcessLogin } from '../pages/Acess/Login';
 
-import { useUser } from '../hooks/useUser';
-
 import { Customize } from '../pages/Customize';
 import { CustomizeText } from '../pages/Customize/steps/CustomizeText';
 import { CustomizeFull } from '../pages/Customize/steps/CustomizeFull';
@@ -37,11 +38,8 @@ import { CustomizeLayout } from '../pages/Customize/components/Layout';
 import { CustomizeContextProvider } from "../hooks/useCustomize";
 
 export function Routes() {
-  const { manager } = useUser()
-
   return (
     <Switch>
-      {/* !ROTAS INICIAIS */}
       <Route path="/" exact component={Dashboard} />
       <Route path="/infos/who" component={InfosWho}/>
       <Route path="/infos/present" component={InfosPresent}/>
@@ -57,7 +55,20 @@ export function Routes() {
       <Route path="/user/login" component={SignIn}/>
       <Route path="/user/register" component={Register}/>
 
-      {/* <CustomizeContextProvider>       
+      <Route path="/acess" exact component={AcessLogin} />
+      <Route path="/acess/dashboard" component={AcessDashboard} />
+      <Route path="/acess/orders" component={AcessOrders} />
+      <Route path="/acess/marks" component={AcessMarks} />
+      <Route path="/acess/models" component={AcessModels} />
+      <Route path="/acess/categories" component={AcessCategories} />
+      <Route path="/acess/category/:id" component={AcessProducts} />
+      <Route path="/acess/users" component={AcessUsers} />
+      <Route path="/acess/personalize" component={AcessPersonalize} />
+      <Route path="/acess/background" component={AcessBackground} />
+      <Route path="/acess/figures" component={AcessFigures} />
+
+      {/* !ROTAS DO PERSONALIZAR RAPIDO */}
+      <CustomizeContextProvider>
         <CustomizeLayout>
           <Route path="/customize" exact component={Customize} />
           <Route path="/customize/background" component={CustomizeBackground} />
@@ -66,24 +77,8 @@ export function Routes() {
           <Route path="/customize/text" component={CustomizeText} />
           <Route path="/customize/full" component={CustomizeFull} />
         </CustomizeLayout>
-      </CustomizeContextProvider> */}
-
-      {
-        manager ? (
-          <>
-          <Route path="/acess/dashboard" exact component={AcessDashboard} />
-          <Route path="/acess/orders" exact component={AcessOrders} />
-          <Route path="/acess/marks" exact component={AcessMarks} />
-          <Route path="/acess/models" exact component={AcessModels} />
-          <Route path="/acess/categories" exact component={AcessCategories} />
-          <Route path="/acess/category/:id" exact component={AcessProducts} />
-          <Route path="/acess/users" exact component={AcessUsers} />
-          <Route path="/acess/personalize" exact component={AcessPersonalize} />
-          <Route path="/acess/background" exact component={AcessBackground} />
-          <Route path="/acess/figures" exact component={AcessFigures} />
-        </>
-        ) : <Route path="/acess" exact component={AcessLogin} />
-      }
+      </CustomizeContextProvider>
     </Switch>
   );
 }
+
