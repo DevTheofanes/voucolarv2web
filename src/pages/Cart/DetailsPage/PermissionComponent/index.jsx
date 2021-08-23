@@ -13,7 +13,7 @@ export function PermissionComponent() {
 
         <FiLogIn color="#333" size={40}/>
 
-        <a href="user/login"><button>Ir para Login</button></a>
+        <a href="/user/login/redirect"><button>Ir para Login</button></a>
       </Container>
     </>
   );

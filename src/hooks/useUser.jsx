@@ -55,11 +55,49 @@ export function UserContextProvider({children}){
     }
   }
 
+  async function handleSessionToCart(data,){
+    try {
+      const response = await api.post('/session', data)
+      toast.success(`Seja bem-vindo ${response.data.user.name}`)
+
+      setUser(response.data.user)
+      setToken(response.data.token)
+      
+      localStorage.setItem('@voucolar/user', JSON.stringify(response.data.user));
+      localStorage.setItem('@voucolar/token', JSON.stringify(String(response.data.token)));
+
+      if(response.data.user.manager){
+        setManager(true)
+        history.push("/shopDetails")
+      }
+
+      history.push("/shopDetails");
+    } catch (error) {
+      toast.error(error.response.data.error)
+      console.log(error.response.data)
+    }
+  }
+
   async function handleRegister(data){
     try {
       const response = await api.post('/users', data)
       
       handleSession({
+        email: data.email,
+        password: data.password
+      })
+
+    } catch (error) {
+      toast.error(error.response.data.error)
+      console.log(error.response.data)
+    }
+  }
+
+  async function handleRegisterRedirectToCart(data){
+    try {
+      const response = await api.post('/users', data)
+      
+      handleSessionToCart({
         email: data.email,
         password: data.password
       })
@@ -81,7 +119,7 @@ export function UserContextProvider({children}){
   }
 
   return (
-    <UserContext.Provider value={{ host, user, token, manager, handleSession, handleRegister, LogoutSession }}>
+    <UserContext.Provider value={{ host, user, token, manager, handleSession, handleSessionToCart, handleRegister, handleRegisterRedirectToCart, LogoutSession }}>
       {children}
     </UserContext.Provider>
   )

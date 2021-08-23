@@ -12,7 +12,7 @@ export function NewModel({ isOpen, onRequestClose }) {
 
   const [idMark, setIdMark] = useState("")
   const [name, setName] = useState("")
-  const [weight, setWeight] = useState("Not used")
+  const [weight, setWeight] = useState("")
   const [dimensions, setDimensions] = useState("")
   const [description, setDescription] = useState("")
   const [file, setFile] = useState(null)
@@ -90,7 +90,7 @@ export function NewModel({ isOpen, onRequestClose }) {
       </FieldInput>
 
       <FieldsContainer>
-        {/* <FieldInput>
+        <FieldInput>
           <label>Peso</label>
           <input 
             type="text" 
@@ -98,10 +98,10 @@ export function NewModel({ isOpen, onRequestClose }) {
             value={weight} 
             onChange={(e) => setWeight(e.target.value)}
           />
-        </FieldInput> */}
+        </FieldInput>
 
         <FieldInput className="secondInput">
-          <label>Dimensões</label>
+          <label>Dimensões (A X L X C)</label>
           <input 
             type="text" 
             placeholder="Dimensões da capinha" 

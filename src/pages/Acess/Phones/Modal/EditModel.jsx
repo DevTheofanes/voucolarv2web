@@ -11,7 +11,7 @@ export function EditModel({ isOpen, onRequestClose, model }) {
   const { token } = useUser()
 
   const [name, setName] = useState("")
-  const [weight, setWeight] = useState("Not used")
+  const [weight, setWeight] = useState("")
   const [dimensions, setDimensions] = useState("")
   const [description, setDescription] = useState("")
   const [file, setFile] = useState(null)
@@ -98,7 +98,7 @@ export function EditModel({ isOpen, onRequestClose, model }) {
       </FieldInput>
 
       <FieldsContainer>
-        {/* <FieldInput>
+        <FieldInput>
           <label>Peso</label>
           <input 
             type="text" 
@@ -106,7 +106,7 @@ export function EditModel({ isOpen, onRequestClose, model }) {
             value={weight} 
             onChange={(e) => setWeight(e.target.value)}
           />
-        </FieldInput> */}
+        </FieldInput>
 
         <FieldInput className="secondInput">
           <label>Dimensões</label>

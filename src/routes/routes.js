@@ -13,6 +13,8 @@ import { DetailsCartPage } from '../pages/Cart/DetailsPage';
 import { UserData } from '../pages/User';
 import { SignIn } from '../pages/User/SignIn';
 import { Register } from '../pages/User/Register';
+import { SignInRedirect } from '../pages/User/SignIn/redirect';
+import { RegisterRedirect } from '../pages/User/Register/redirect';
 import { FinishBuy } from '../pages/Cart/FinishBuy';
 
 import { AcessDashboard } from '../pages/Acess/Dashboard';
@@ -52,8 +54,10 @@ export function Routes() {
       <Route path="/shopFinish/:id" component={FinishBuy}/>
 
       <Route path="/user" exact component={UserData}/>
-      <Route path="/user/login" component={SignIn}/>
-      <Route path="/user/register" component={Register}/>
+      <Route path="/user/login" exact component={SignIn}/>
+      <Route path="/user/login/redirect" exact component={SignInRedirect}/>
+      <Route path="/user/register" exact component={Register}/>
+      <Route path="/user/register/redirect" exact component={RegisterRedirect}/>
 
       <Route path="/acess" exact component={AcessLogin} />
       <Route path="/acess/dashboard" component={AcessDashboard} />
