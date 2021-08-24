@@ -10,6 +10,7 @@ import {
 import { useCart } from '../../../../../hooks/useCart';
 import { calculateFrete } from '../../../../../utils/correios';
 import history from '../../../../../services/history';
+import api from '../../../../../services/api';
 
 export function ColumnLaterals() {
   const { total } = useCart()
@@ -50,7 +51,11 @@ export function ColumnLaterals() {
       option = "04510"
     }
 
-    await calculateFrete({cep: cep, option: option}, setValueFrete, setDaysFrete)
+    // await calculateFrete({cep: cep, option: option}, setValueFrete, setDaysFrete)
+    const responseToapi = await api.post("correios", {cep: cep, option: option})
+
+    setValueFrete(responseToapi.data.value)
+    setDaysFrete(responseToapi.data.days)
   }
 
   function handleNext(){

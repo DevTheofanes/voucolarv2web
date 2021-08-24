@@ -1,13 +1,34 @@
+import { useState, useEffect } from 'react';
 import { AcessLayout as Container } from '../index'
 import { HeaderContent } from '../styles'
+import { ValueProduct } from './Modal';
+
+import { useUser } from '../../../hooks/useUser';
+import api from '../../../services/api';
 
 import { ItemContainer, Item } from './styles';
 
 export function AcessPersonalize() {
+  const {token} = useUser()
+
+  const [isValueProductOpen, setIsValueProductOpen] = useState(false)
+  const handleOpenValueProductModal = () => setIsValueProductOpen(true)
+  const handleCloseValueProductModal = () => setIsValueProductOpen(false)
+
+  useEffect(()=> {    
+    if(token){
+      api.defaults.headers.authorization = token
+    }
+  }, [token])
+
   return (
     <Container>
       <HeaderContent>
         <span>Personalizar Rápido</span>
+
+        <button type="button" onClick={() => handleOpenValueProductModal()}>
+          <label>Valor da capinha personalizada</label>
+        </button>  
       </HeaderContent>
 
       <ItemContainer>
@@ -21,6 +42,9 @@ export function AcessPersonalize() {
           <span>Figurinhas</span>
         </Item>
       </ItemContainer>
+
+      <ValueProduct isOpen={isValueProductOpen} onRequestClose={handleCloseValueProductModal}/>
     </Container>
   );
 }
+

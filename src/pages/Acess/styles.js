@@ -82,6 +82,22 @@ export const HeaderContent = styled.div`
   justify-content: space-between;
   align-items:center;
 
+  select{
+    width: 36%;
+    padding: 0 0.5rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+       
+    border: 1px solid #c1c1c1;
+    background-color: var(--shape);
+    font-weight:400;
+    font-size: 1rem; 
+        
+    &::placeholder{
+      color: #c1c1c1;
+    }
+  }
+
   span{
     font-weight: 600;
     color: var(--background-acess);

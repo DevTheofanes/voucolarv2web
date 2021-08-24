@@ -171,6 +171,8 @@ const CustomizeContextProvider = ({ children }) => {
 
         let backgroundImage = "";
         let nameMark = "";
+        let nameModel = "";
+
 
         const models = modelsAll.data
 
@@ -180,6 +182,7 @@ const CustomizeContextProvider = ({ children }) => {
             if(element.id === model){
               backgroundImage = element.image;
               nameMark = element.nameMark
+              nameModel = element.name
             }
           }
         }
@@ -196,6 +199,7 @@ const CustomizeContextProvider = ({ children }) => {
           ...product,
           background: backgroundImage,
           nameMark,
+          nameModel,
           amount: 1
         })
 

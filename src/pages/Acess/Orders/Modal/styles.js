@@ -24,6 +24,26 @@ export const Division = styled.div`
 
   span{
     margin: 0 0 .5rem .5rem;
+
+    a{
+      color:  rgb(35, 40, 45);
+    }
+  }
+
+  select{
+    /* width: 36%; */
+    padding: 0 0.25rem;
+    height: 1.8rem;
+    border-radius: 0.25rem;
+       
+    border: 1px solid #c1c1c1;
+    background-color: var(--shape);
+    font-weight:400;
+    font-size: 1rem; 
+        
+    &::placeholder{
+      color: #c1c1c1;
+    }
   }
 
   .productsList{

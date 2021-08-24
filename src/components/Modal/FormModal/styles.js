@@ -174,3 +174,5 @@ export const ButtonsContainer = styled.div`
         }
     }
 `;
+
+export const FormInfo = styled.span``;

@@ -80,7 +80,12 @@ export function DetailsCartPage() {
       option = "04510"
     }
 
-    await calculateFrete({cep: cep, option: option}, setFrete, ()=>{})
+    const responseToapi = await api.post("correios", {cep: cep, option: option})
+
+    setFrete(responseToapi.data.value)
+    
+
+    // await calculateFrete({cep: cep, option: option}, setFrete, ()=>{})
   }
 
   async function createNewAddress(data, delivery){
@@ -120,25 +125,51 @@ export function DetailsCartPage() {
     await createNewAddress({name, surname, cep, street, nation:"Brasil", number, state, phone, comments: comments ? comments : "Vazio"}, false)
     
     let productsIds = ""
+    let customizationsIds = ""
+
+    console.log(cart)
 
     for (const key in cart) {
       if (Object.hasOwnProperty.call(cart, key)) {
         const element = cart[key];
-        productsIds += element.name
-        productsIds += "_"
-        productsIds += element.nameMark
-        productsIds += "_"
-        productsIds += element.id
-        if(key + 1 < cart.length){
-          productsIds += ","
+        if(element.personalize){
+          if(customizationsIds.length > 1){
+            customizationsIds += ","
+          }
+          customizationsIds += "Id"
+          customizationsIds += "_"
+          customizationsIds += element.id
+          customizationsIds += "_"
+          customizationsIds += "Quantidade"
+          customizationsIds += "_"
+          customizationsIds += element.amount
+          customizationsIds += "_"
+          customizationsIds += element.nameMark
+          customizationsIds += "_"
+          customizationsIds += element.nameModel
         }
+
+        if(!element.personalize){
+          if(productsIds.length > 1){
+            productsIds += ","
+          }
+          productsIds += element.name
+          productsIds += "_"
+          productsIds += element.nameMark
+          productsIds += "_"
+          productsIds += element.id
+          productsIds += "_"
+          productsIds += "Quantidade"
+          productsIds += "_"
+          productsIds += element.amount
+        }  
       }
     }
 
     try {
-      const response = await api.post(`/users/${user.id}/orders`, {addressId, addressIdDelivery: addressIdDelivery ? addressIdDelivery : addressId, productsIds, frete, subTotal: total, total: total + 0, comments: comments ? comments : "Vazio" })
+      const response = await api.post(`/users/${user.id}/orders`, {addressId, customizationsIds: customizationsIds ? customizationsIds : null, addressIdDelivery: addressIdDelivery ? addressIdDelivery : addressId, productsIds: productsIds ? productsIds : null, frete, subTotal: total, total: total + 0, comments: comments ? comments : "Vazio" })
       console.log(response.data)
-      history.push("/shopFinish", {order : response.data, methodPayment: typePay})
+      // history.push("/shopFinish", {order : response.data, methodPayment: typePay})
     } catch (error) {
       toast.error(error.response.data.error)
     }

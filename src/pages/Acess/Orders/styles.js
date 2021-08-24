@@ -13,6 +13,7 @@ export const Item = styled.button`
   border-radius: 0.25rem;
   border: 0;
   background-color: var(--background);
+  background-color: #dcdcdc;
 
   display: grid;
   grid-template-columns: 1fr 2fr;
