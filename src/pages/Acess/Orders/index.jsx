@@ -66,7 +66,7 @@ export const AcessOrders = (props) => {
               </Item>
           ))
         }
-        {/* <InfoOrder isOpen={isOrderInfoOpen} onRequestClose={() => setIsOrderInfoOpen(false)} order={orderSelected}/> */}
+        <InfoOrder isOpen={isOrderInfoOpen} onRequestClose={() => setIsOrderInfoOpen(false)} order={orderSelected}/>
       </Content>
     </Container>
   );

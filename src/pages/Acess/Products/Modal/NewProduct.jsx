@@ -72,6 +72,7 @@ export function NewProduct({ isOpen, onRequestClose, id }) {
     // }
     // console.log(data)
 
+    // console.log(file)
     
     try {
       const response = await api.patch(`category/${id}/products`, data)

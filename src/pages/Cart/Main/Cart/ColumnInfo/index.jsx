@@ -51,7 +51,7 @@ function ColumnInfo() {
                         
                         <ImagesPhone>
                           <div>
-                            <Link to={`/category/${item.category.name}/product/${item.id}`}>
+                            <Link to={item.category ? `/category/${item.category.name}/product/${item.id}` : '#'}>
                               <img src={`${host}/files/${item.image}`} alt={item.name} style={{ objectFit: "cover"}}/>
                               <img src={`${host}/files/${item.background}`} alt=""/>
                             </Link>
@@ -61,7 +61,7 @@ function ColumnInfo() {
                         
                         </ProductThumbnail>
                         <ProductNameGrid>
-                          <a href={`/category/${item.category.name}/product/${item.id}`}>{item.name}</a>
+                          <a href={item.category ? `/category/${item.category.name}/product/${item.id}` : '#'}>{item.name}</a>
                         </ProductNameGrid>
                         <ProductPriceGrid>
                           <span>
@@ -106,3 +106,4 @@ function ColumnInfo() {
 }
 
 export default ColumnInfo;
+

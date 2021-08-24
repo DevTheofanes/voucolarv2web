@@ -3,14 +3,31 @@ import { createContext, useContext, useState } from "react";
 import { toast } from 'react-toastify';
 
 import { useUser } from './useUser';
+import { useCart } from './useCart';
 
 import api, { googleAPI } from '../services/api'
 import history from '../services/history';
 
 const CustomizeContext = createContext([]);
 
+function dataURLtoFile(dataurl, filename) {
+
+  var arr = dataurl.split(','),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], filename, { type: mime });
+}
+
 const CustomizeContextProvider = ({ children }) => {
   const { host } = useUser();
+  const { addToCart } = useCart();
 
   const [text, setText] = useState('');
   const [color, setColor] = useState('#000000');
@@ -127,6 +144,7 @@ const CustomizeContextProvider = ({ children }) => {
 
   const stepNavigate = async (direction) => {
     if (direction === 'next' && currentStep.step === lastStep.step) {
+      
       const casePreview = canvas.toDataURL({
         format: 'jpeg',
         quality: 1,
@@ -141,8 +159,56 @@ const CustomizeContextProvider = ({ children }) => {
         quality: 1,
       });
       localStorage.setItem('vouColarCase', caseImage);
+  
+      var file = dataURLtoFile(caseImage, 'personalize.jpeg');
 
-      return window.open('https://voucolar.com.br', '_blank');
+      const data = new FormData();
+      data.append('image', file);
+      try {
+        const response = await api.patch("customizations", data)
+        const value = await api.get("/valueCustomization")
+        const modelsAll = await api.get("/models")
+
+        let backgroundImage = "";
+        let nameMark = "";
+
+        const models = modelsAll.data
+
+        for (const key in models) {
+          if (Object.hasOwnProperty.call(models, key)) {
+            const element = models[key];
+            if(element.id === model){
+              backgroundImage = element.image;
+              nameMark = element.nameMark
+            }
+          }
+        }
+
+        const product = {
+          id: response.data.id,
+          personalize: true,
+          image: response.data.image,
+          name: "Produto Personalizado",
+          value: value.data.value,
+        }
+
+        addToCart({
+          ...product,
+          background: backgroundImage,
+          nameMark,
+          amount: 1
+        })
+
+        toast.success("Personalização adicionada ao carrinho!")
+
+      } catch (error) {
+        console.log(error)
+        toast.warn("Algo deu errado, tente novamente mais tarde.")
+      }
+
+      // return history.go("/")
+        
+      // return window.open('https://voucolar.com.br', '_blank');
     } 
 
     try {
