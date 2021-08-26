@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { 
   Container,
@@ -8,14 +8,15 @@ import {
 } from './styles';
 
 import { useCart } from '../../../../../hooks/useCart';
-import { calculateFrete } from '../../../../../utils/correios';
+// import { calculateFrete } from '../../../../../utils/correios';
 import history from '../../../../../services/history';
 import api from '../../../../../services/api';
 
 export function ColumnLaterals() {
   const { total } = useCart()
 
-  const [ viewDeliveryBox, setViewDeliveryBox ] = useState(false)
+  const [ viewDeliveryBox, setViewDeliveryBox ] = useState(true)
+  const [ freteWithdraw, setFreteWithdraw ] = useState(false)
 
   const [ selectTypeDelivery, setSelectTypeDelivery ] = useState('')
   const [ cep, setCep ] = useState('')
@@ -45,22 +46,36 @@ export function ColumnLaterals() {
       return alert("Erro na validação T")
     }
     
-    let option = "04014"
-
-    if(selectTypeDelivery === "pac"){
-      option = "04510"
+    if(selectTypeDelivery === "ret"){
+      setValueFrete(0.00001)
+      setDaysFrete(0.00001)
     }
+    else{
+      let option = "04014"
 
-    // await calculateFrete({cep: cep, option: option}, setValueFrete, setDaysFrete)
-    const responseToapi = await api.post("correios", {cep: cep, option: option})
+      if(selectTypeDelivery === "pac"){
+        option = "04510"
+      }
 
-    setValueFrete(responseToapi.data.value)
-    setDaysFrete(responseToapi.data.days)
+      // await calculateFrete({cep: cep, option: option}, setValueFrete, setDaysFrete)
+      const responseToapi = await api.post("correios", {cep: cep, option: option})
+
+      setValueFrete(responseToapi.data.value)
+      setDaysFrete(responseToapi.data.days)
+    }
   }
 
   function handleNext(){
     history.push("/shopDetails")
   }
+
+  useEffect(() => {
+    if(80000000 < cep && cep < 83540000){
+      setFreteWithdraw(true)
+    }else{
+      setFreteWithdraw(false)
+    }
+  }, [cep])
 
   return (
     <Container>
@@ -94,15 +109,25 @@ export function ColumnLaterals() {
               </strong>
 
               <span>Dias para entrega:</span>
-              <strong>{daysFrete} Dias</strong>
+              <strong>{daysFrete === 0.00001 ? "Retirada no local" : `${daysFrete} Dias` }</strong>
             </Item>
           ) : (
             <DeliveryContainer>
+              <span>Digite seu endereço para ver as opções de entrega.</span><br/><br/>
+
               <div>
                 <input type="radio" id="sedex" name="type" value="sedex" selected={true} onClick={() => setSelectTypeDelivery('sedex')}/>
                 <label htmlFor="sedex">Sedex</label><br/>
                 <input type="radio" id="pac" name="type" value="pac" onClick={() => setSelectTypeDelivery('pac')}/>
                 <label htmlFor="pac">Pac</label><br/>
+                {
+                  freteWithdraw ? (
+                    <>
+                      <input type="radio" id="ret" name="type" value="ret" onClick={() => setSelectTypeDelivery('ret')}/>
+                      <label htmlFor="ret">Retirar no local</label><br/>
+                    </>
+                  ): null
+                }
               </div>
 
               <input className="inputCEP" type="text" placeholder="Digite seu CEP (Apenas numeros)" value={cep} onChange={(e) => setCep(e.target.value)}/>

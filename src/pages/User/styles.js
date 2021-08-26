@@ -19,6 +19,13 @@ export const Content = styled.div`
 
   width: 48rem;
   background-color:#f7f7f7;
+
+  @media (max-width:600px){
+    display: flex;
+    flex-direction: column;
+    
+    width: 24rem;
+  }
 `;
 
 export const OrdersContainer = styled.div`
@@ -49,6 +56,12 @@ export const Order = styled.div`
 export const InfoContainer = styled.div`
   padding-left: 1rem;
   border-left: 1px solid #c1c1c1;
+  
+  @media (max-width:600px){
+    padding-left: 0;
+    border-left: 0;
+    margin-top: 1rem;
+  }
 
   button{
     background-color: #a16695;

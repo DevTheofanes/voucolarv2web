@@ -99,7 +99,7 @@ export function EditModel({ isOpen, onRequestClose, model }) {
 
       <FieldsContainer>
         <FieldInput>
-          <label>Peso</label>
+          <label>Peso (gr)</label>
           <input 
             type="text" 
             placeholder="Peso da capinha" 

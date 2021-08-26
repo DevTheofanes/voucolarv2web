@@ -178,6 +178,8 @@ export function DetailsCartPage() {
   useEffect(() => {
     if(80000000 < cep && cep < 83540000){
       setFreteWithdraw(true)
+    }else{
+      setFreteWithdraw(false)
     }
   },[cep])
 
